@@ -25,6 +25,18 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         setupTextField("BOTTOM", textField: bottomTextField)
     }
 
+    override func viewWillAppear(animated: Bool) {
+        // Enable the camera button if is supported by the device
+        cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(.Camera)
+        
+        subscribeToKeyboardNotifications()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        unsubscribeToKeyboardNotifications()
+    }
+    
     func setupTextField(string: String, textField: UITextField) {
         textField.delegate = self
         // Text should approximate the "Impact" font, all caps, white with a black outline
@@ -42,9 +54,13 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         textField.textAlignment = .Center
     }
     
-    override func viewWillAppear(animated: Bool) {
-        // Enable the camera button if is supported by the device
-        cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(.Camera)
+  
+    func keyboardWillShow(notification: NSNotification) {
+        self.view.frame.origin.y -= getKeyboardHeight(notification)
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        self.view.frame.origin.y += getKeyboardHeight(notification)
     }
     
     // MARK: -
@@ -95,5 +111,21 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         presentViewController(imagePickerController, animated: true, completion: nil)
     }
     
+    func getKeyboardHeight(notification: NSNotification) -> CGFloat {
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as NSValue
+        return keyboardSize.CGRectValue().height
+    }
+    
+    func subscribeToKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+        
+    }
+    
+    func unsubscribeToKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+    }
 }
 

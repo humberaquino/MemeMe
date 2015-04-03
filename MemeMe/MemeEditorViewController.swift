@@ -28,7 +28,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     override func viewWillAppear(animated: Bool) {
         // Enable the camera button if is supported by the device
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(.Camera)
-        
+                
         subscribeToKeyboardNotifications()
     }
     
@@ -38,7 +38,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     func setupTextField(string: String, textField: UITextField) {
-        textField.delegate = self
         // Text should approximate the "Impact" font, all caps, white with a black outline
         let memeTextAttributes = [
             NSStrokeColorAttributeName : UIColor.blackColor(),
@@ -51,16 +50,21 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         textField.attributedText = attributedString
         textField.defaultTextAttributes = memeTextAttributes
         // Text should be center-aligned
-        textField.textAlignment = .Center
+        textField.textAlignment = .Center        
+        textField.delegate = self
     }
     
   
     func keyboardWillShow(notification: NSNotification) {
-        self.view.frame.origin.y -= getKeyboardHeight(notification)
+        if bottomTextField.isFirstResponder() {
+            self.view.frame.origin.y -= getKeyboardHeight(notification)
+        }
     }
     
     func keyboardWillHide(notification: NSNotification) {
-        self.view.frame.origin.y += getKeyboardHeight(notification)
+        if bottomTextField.isFirstResponder() {
+            self.view.frame.origin.y += getKeyboardHeight(notification)
+        }
     }
     
     // MARK: -

@@ -21,7 +21,14 @@ class MemeTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         let applicationDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         memes = applicationDelegate.memes
-        self.tableView.reloadData()
+        
+//        if memes.count == 0 {
+//            // No memes. Lets present the editor
+//            presentMemeEditor()
+//        } else {
+//            // We have some memes, lets reload them
+//            self.tableView.reloadData()
+//        }
     }
     
     // MARK: -
@@ -44,6 +51,10 @@ class MemeTableViewController: UITableViewController {
     
     
     @IBAction func createMeme(sender: UIBarButtonItem) {        
+        presentMemeEditor()
+    }
+    
+    func presentMemeEditor() {
         let memeEditorController = storyboard!.instantiateViewControllerWithIdentifier("memeEditor") as MemeEditorViewController
         
         self.presentViewController(memeEditorController, animated: true, completion: nil)

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="j3A-Rt-QlI">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Meme Editor View Controller-->
@@ -57,7 +58,11 @@
                                                 <action selector="shareMeme:" destination="vXZ-lx-hvc" id="Qgh-ra-ySw"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="nP7-wW-HAY"/>
+                                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="nP7-wW-HAY">
+                                            <connections>
+                                                <action selector="cancelMeme:" destination="vXZ-lx-hvc" id="sa6-Pk-hAA"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -170,6 +175,7 @@
             <objects>
                 <tableViewController id="xY2-m6-04l" customClass="MemeTableViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" id="nNl-h1-0Ad">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -230,40 +236,6 @@
             </objects>
             <point key="canvasLocation" x="1351.5" y="1063"/>
         </scene>
-        <!--Meme Collection View Controller-->
-        <scene sceneID="YSf-iq-bVy">
-            <objects>
-                <collectionViewController id="glr-qU-yfO" customClass="MemeCollectionViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="pp1-bG-nb3">
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CIL-SQ-v1G">
-                            <size key="itemSize" width="50" height="50"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="OND-uq-pbC">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="glr-qU-yfO" id="dcF-TQ-e0j"/>
-                            <outlet property="delegate" destination="glr-qU-yfO" id="uc2-m9-QX9"/>
-                        </connections>
-                    </collectionView>
-                    <navigationItem key="navigationItem" id="luB-qL-88a"/>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mzc-hF-2k3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1351.5" y="1729"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="GNc-th-HB5">
             <objects>
@@ -314,12 +286,136 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="glr-qU-yfO" kind="relationship" relationship="rootViewController" id="6zK-XE-5F9"/>
+                        <segue destination="eBL-qm-6Oi" kind="relationship" relationship="rootViewController" id="sZL-3G-95Y"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fv8-tR-ENn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="453" y="1729"/>
+        </scene>
+        <!--Meme Collection View Controller-->
+        <scene sceneID="SCd-f9-QLs">
+            <objects>
+                <viewController id="eBL-qm-6Oi" customClass="MemeCollectionViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NjE-Pi-JTR"/>
+                        <viewControllerLayoutGuide type="bottom" id="h9S-hF-W8b"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DGB-p8-LS9">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="q3p-cb-yTG">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uTT-NS-csI">
+                                    <size key="itemSize" width="106" height="104"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <imageView key="backgroundView" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="syr-cD-jxi">
+                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </imageView>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MemeCollectionViewCell" id="HsW-Iw-VeX" customClass="MemeCollectionViewCell" customModule="MemeMe" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="106" height="104"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eSQ-4x-NeG">
+                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="centerX" secondItem="eSQ-4x-NeG" secondAttribute="centerX" id="5zV-tk-Wd6"/>
+                                            <constraint firstAttribute="centerY" secondItem="eSQ-4x-NeG" secondAttribute="centerY" id="fVT-g2-U3T"/>
+                                            <constraint firstItem="eSQ-4x-NeG" firstAttribute="top" secondItem="HsW-Iw-VeX" secondAttribute="topMargin" constant="20" id="qAc-DS-eDw">
+                                                <variation key="widthClass=compact" constant="0.0"/>
+                                            </constraint>
+                                            <constraint firstItem="eSQ-4x-NeG" firstAttribute="leading" secondItem="HsW-Iw-VeX" secondAttribute="leadingMargin" constant="15" id="wu1-H1-T5m">
+                                                <variation key="widthClass=compact" constant="0.0"/>
+                                            </constraint>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="subviews">
+                                                <exclude reference="eSQ-4x-NeG"/>
+                                            </mask>
+                                            <mask key="constraints">
+                                                <exclude reference="5zV-tk-Wd6"/>
+                                                <exclude reference="fVT-g2-U3T"/>
+                                                <exclude reference="qAc-DS-eDw"/>
+                                                <exclude reference="wu1-H1-T5m"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="widthClass=compact">
+                                            <mask key="subviews">
+                                                <include reference="eSQ-4x-NeG"/>
+                                            </mask>
+                                            <mask key="constraints">
+                                                <include reference="5zV-tk-Wd6"/>
+                                                <include reference="fVT-g2-U3T"/>
+                                                <include reference="qAc-DS-eDw"/>
+                                                <include reference="wu1-H1-T5m"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <outlet property="memeImageView" destination="eSQ-4x-NeG" id="iZ7-Iw-cwl"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="eBL-qm-6Oi" id="xmH-30-LB6"/>
+                                    <outlet property="delegate" destination="eBL-qm-6Oi" id="a9I-nA-6ey"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="q3p-cb-yTG" secondAttribute="trailing" id="GNT-eU-2hS"/>
+                            <constraint firstItem="q3p-cb-yTG" firstAttribute="top" secondItem="DGB-p8-LS9" secondAttribute="top" id="QbQ-Py-glR"/>
+                            <constraint firstItem="q3p-cb-yTG" firstAttribute="leading" secondItem="DGB-p8-LS9" secondAttribute="leadingMargin" constant="-16" id="gG4-Jc-SmV">
+                                <variation key="widthClass=compact" constant="-16"/>
+                            </constraint>
+                            <constraint firstAttribute="bottom" secondItem="q3p-cb-yTG" secondAttribute="bottom" id="ype-nP-RMb"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="q3p-cb-yTG"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="GNT-eU-2hS"/>
+                                <exclude reference="QbQ-Py-glR"/>
+                                <exclude reference="gG4-Jc-SmV"/>
+                                <exclude reference="ype-nP-RMb"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="q3p-cb-yTG"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="GNT-eU-2hS"/>
+                                <include reference="QbQ-Py-glR"/>
+                                <include reference="gG4-Jc-SmV"/>
+                                <include reference="ype-nP-RMb"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="QLh-m4-q3N"/>
+                    <connections>
+                        <outlet property="collectionView" destination="q3p-cb-yTG" id="Uog-jb-KRS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nh7-Na-0Qf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1284" y="1729"/>
         </scene>
     </scenes>
 </document>

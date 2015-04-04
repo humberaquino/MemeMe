@@ -106,6 +106,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     // MARK: -
     // MARK: Actions
     
+    @IBAction func cancelMeme(sender: UIBarButtonItem) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     @IBAction func shareMeme(sender: UIBarButtonItem) {
         //  generate a memed image
         let memedImage = generateMemedImage()
@@ -188,7 +192,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         // Add the saved meme to the shared model array
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         appDelegate.memes.append(meme)
-        println(appDelegate.memes)
     }
 }
 

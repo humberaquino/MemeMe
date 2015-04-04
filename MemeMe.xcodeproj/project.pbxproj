@@ -13,6 +13,10 @@
 		571649CB1ACF0CA900F8CFE9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 571649CA1ACF0CA900F8CFE9 /* Images.xcassets */; };
 		571649CE1ACF0CA900F8CFE9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 571649CC1ACF0CA900F8CFE9 /* LaunchScreen.xib */; };
 		571649DA1ACF0CA900F8CFE9 /* MemeMeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571649D91ACF0CA900F8CFE9 /* MemeMeTests.swift */; };
+		578EB6261AD0377100111BA1 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578EB6251AD0377100111BA1 /* Meme.swift */; };
+		578EB6281AD03BC700111BA1 /* MemeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578EB6271AD03BC700111BA1 /* MemeCollectionViewController.swift */; };
+		578EB62A1AD03BD100111BA1 /* MemeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578EB6291AD03BD100111BA1 /* MemeTableViewController.swift */; };
+		578EB62E1AD082BD00111BA1 /* MemeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578EB62D1AD082BD00111BA1 /* MemeTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +40,10 @@
 		571649D31ACF0CA900F8CFE9 /* MemeMeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MemeMeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		571649D81ACF0CA900F8CFE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		571649D91ACF0CA900F8CFE9 /* MemeMeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeMeTests.swift; sourceTree = "<group>"; };
+		578EB6251AD0377100111BA1 /* Meme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
+		578EB6271AD03BC700111BA1 /* MemeCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeCollectionViewController.swift; sourceTree = "<group>"; };
+		578EB6291AD03BD100111BA1 /* MemeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeTableViewController.swift; sourceTree = "<group>"; };
+		578EB62D1AD082BD00111BA1 /* MemeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +87,11 @@
 			children = (
 				571649C31ACF0CA900F8CFE9 /* AppDelegate.swift */,
 				571649C51ACF0CA900F8CFE9 /* MemeEditorViewController.swift */,
+				578EB6271AD03BC700111BA1 /* MemeCollectionViewController.swift */,
+				578EB6291AD03BD100111BA1 /* MemeTableViewController.swift */,
 				571649C71ACF0CA900F8CFE9 /* Main.storyboard */,
+				578EB62D1AD082BD00111BA1 /* MemeTableViewCell.swift */,
+				578EB6251AD0377100111BA1 /* Meme.swift */,
 				571649CA1ACF0CA900F8CFE9 /* Images.xcassets */,
 				571649CC1ACF0CA900F8CFE9 /* LaunchScreen.xib */,
 				571649C11ACF0CA900F8CFE9 /* Supporting Files */,
@@ -212,7 +224,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				578EB6281AD03BC700111BA1 /* MemeCollectionViewController.swift in Sources */,
+				578EB6261AD0377100111BA1 /* Meme.swift in Sources */,
 				571649C61ACF0CA900F8CFE9 /* MemeEditorViewController.swift in Sources */,
+				578EB62E1AD082BD00111BA1 /* MemeTableViewCell.swift in Sources */,
+				578EB62A1AD03BD100111BA1 /* MemeTableViewController.swift in Sources */,
 				571649C41ACF0CA900F8CFE9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -405,6 +421,7 @@
 				571649DF1ACF0CA900F8CFE9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		571649E01ACF0CA900F8CFE9 /* Build configuration list for PBXNativeTarget "MemeMeTests" */ = {
 			isa = XCConfigurationList;
@@ -413,6 +430,7 @@
 				571649E21ACF0CA900F8CFE9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

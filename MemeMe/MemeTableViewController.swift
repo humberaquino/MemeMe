@@ -21,16 +21,17 @@ class MemeTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         let applicationDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         memes = applicationDelegate.memes
-        
-//        if memes.count == 0 {
-//            // No memes. Lets present the editor
-//            presentMemeEditor()
-//        } else {
-//            // We have some memes, lets reload them
-//            self.tableView.reloadData()
-//        }
+        self.tableView.reloadData()
     }
     
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if memes.count == 0 {
+            // No memes. Lets present the editor
+            presentMemeEditor()
+        }
+    }
     // MARK: -
     // MARK: UITableViewDataSource
     
@@ -49,6 +50,17 @@ class MemeTableViewController: UITableViewController {
         return cell
     }
     
+    // MARK: -
+    // MARK: UITableViewDelegate
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let meme = memes[indexPath.row]
+        
+        let destinationController = storyboard?.instantiateViewControllerWithIdentifier("MemeDetail") as MemeDetailViewController
+        destinationController.memedImage = meme.memedImage
+        
+        self.navigationController?.pushViewController(destinationController, animated: true)        
+    }
     
     @IBAction func createMeme(sender: UIBarButtonItem) {        
         presentMemeEditor()

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class MemeCollectionViewController: UIViewController, UICollectionViewDataSource {
+class MemeCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     var memes: [Meme]!
     
@@ -39,5 +39,25 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDataSource
 //        cell.memeImageView.contentMode = UIViewContentMode.ScaleAspectFit
         
         return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let meme = memes[indexPath.row]
+        
+        let destinationController = storyboard?.instantiateViewControllerWithIdentifier("MemeDetail") as MemeDetailViewController
+        destinationController.memedImage = meme.memedImage
+        
+        self.navigationController?.pushViewController(destinationController, animated: true)
+    }
+    
+    
+    @IBAction func createMeme(sender: UIBarButtonItem) {
+        presentMemeEditor()
+    }
+    
+    func presentMemeEditor() {
+        let memeEditorController = storyboard!.instantiateViewControllerWithIdentifier("memeEditor") as MemeEditorViewController
+        
+        self.presentViewController(memeEditorController, animated: true, completion: nil)
     }
 }

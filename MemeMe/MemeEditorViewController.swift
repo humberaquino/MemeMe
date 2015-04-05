@@ -8,20 +8,26 @@
 
 import UIKit
 
+// Meme editor view. Memes can use the photo library or the camera (is supported)
+// When ready, the meme can be shared
 class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
-
-    @IBOutlet weak var cameraButton: UIBarButtonItem!
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var shareButton: UIBarButtonItem!
     
+    // Meme text and image
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
-
+    @IBOutlet weak var imageView: UIImageView!
     
+    // Top bar
     @IBOutlet weak var navigationBar: UINavigationBar!
+    @IBOutlet weak var cameraButton: UIBarButtonItem!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
+    
+    // Bottom bar
     @IBOutlet weak var toolBar: UIToolbar!
     
+    // Existing meme reference. Used only when the editor will edit an existing meme
     var meme: Meme?
+    
     
     // MARK: -
     // MARK: View life cycle
@@ -29,24 +35,23 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         if let existingMeme = meme {
+            // Existing meme. Use self.meme
             setupTextField(existingMeme.top, textField: topTextField)
             setupTextField(existingMeme.bottom, textField: bottomTextField)
             imageView.image = existingMeme.image
             shareButton.enabled = true
         } else {
+            // New meme. self.meme is not used
             setupTextField("TOP", textField: topTextField)
             setupTextField("BOTTOM", textField: bottomTextField)
             shareButton.enabled = false
         }
-        
     }
-
+    
     override func viewWillAppear(animated: Bool) {
         // Enable the camera button if is supported by the device
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(.Camera)
-                
         subscribeToKeyboardNotifications()
     }
     
@@ -55,24 +60,20 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         unsubscribeToKeyboardNotifications()
     }
     
-    func setupTextField(string: String, textField: UITextField) {
-        // Text should approximate the "Impact" font, all caps, white with a black outline
-        let memeTextAttributes = [
-            NSStrokeColorAttributeName : UIColor.blackColor(),
-            NSForegroundColorAttributeName : UIColor.whiteColor(),
-            NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-            NSStrokeWidthAttributeName : -3
-        ]
+    // MARK: -
+    // MARK: NSNotification subscriptions and selectors
+    
+    func subscribeToKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
         
-        let attributedString = NSAttributedString(string: string, attributes: memeTextAttributes)
-        textField.attributedText = attributedString
-        textField.defaultTextAttributes = memeTextAttributes
-        // Text should be center-aligned
-        textField.textAlignment = .Center        
-        textField.delegate = self
     }
     
-  
+    func unsubscribeToKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
     func keyboardWillShow(notification: NSNotification) {
         if bottomTextField.isFirstResponder() {
             self.view.frame.origin.y -= getKeyboardHeight(notification)
@@ -83,6 +84,12 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         if bottomTextField.isFirstResponder() {
             self.view.frame.origin.y += getKeyboardHeight(notification)
         }
+    }
+    
+    func getKeyboardHeight(notification: NSNotification) -> CGFloat {
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as NSValue
+        return keyboardSize.CGRectValue().height
     }
     
     // MARK: -
@@ -104,10 +111,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         
-        if let editedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
-            imageView.image = editedImage
+        if let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            imageView.image = originalImage
             // Enable share button now that we have an image
-            shareButton.enabled = true            
+            shareButton.enabled = true
         }
         
         dismissViewControllerAnimated(true, completion: nil)
@@ -123,7 +130,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBAction func shareMeme(sender: UIBarButtonItem) {
         //  generate a memed image
         let memedImage = generateMemedImage()
-
+        
         // define an instance of the ActivityViewController
         // pass the ActivityViewController a memedImage as an activity item
         let activity = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
@@ -152,29 +159,29 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     // MARK: -
     // MARK: Utility methods
     
+    // Setup Text filed to approximate to the "Impact" font, all caps, white with a black outline
+    func setupTextField(string: String, textField: UITextField) {
+        let memeTextAttributes = [
+            NSStrokeColorAttributeName : UIColor.blackColor(),
+            NSForegroundColorAttributeName : UIColor.whiteColor(),
+            NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+            NSStrokeWidthAttributeName : -3
+        ]
+        
+        let attributedString = NSAttributedString(string: string, attributes: memeTextAttributes)
+        textField.attributedText = attributedString
+        textField.defaultTextAttributes = memeTextAttributes
+        // Text should be center-aligned
+        textField.textAlignment = .Center
+        textField.delegate = self
+    }
+    
+    // Present the image picker depending on the specified sourceType
     func presentImagePickerOfType(sourceType: UIImagePickerControllerSourceType) {
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
-        imagePickerController.allowsEditing = true
         imagePickerController.sourceType = sourceType
         presentViewController(imagePickerController, animated: true, completion: nil)
-    }
-    
-    func getKeyboardHeight(notification: NSNotification) -> CGFloat {
-        let userInfo = notification.userInfo
-        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as NSValue
-        return keyboardSize.CGRectValue().height
-    }
-    
-    func subscribeToKeyboardNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
-        
-    }
-    
-    func unsubscribeToKeyboardNotifications() {
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
     }
     
     func toolbarVisible(visible: Bool) {
@@ -191,23 +198,27 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         self.view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
         let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
+        
         // show toolbar
         toolbarVisible(true)
         
         return memedImage
     }
     
+    // Saves the meme correctly. Is the meme is new it saves a new one in the shared model
+    // If the meme already exists the method only updates its values
     func saveMeme(memedImage: UIImage) {
         if let existingMeme = meme {
+            // Meme exists. Just change its existing properties
             existingMeme.top = topTextField.text!
             existingMeme.bottom = bottomTextField.text!
             existingMeme.image = imageView.image!
             existingMeme.memedImage = memedImage
         } else {
+            // New meme. Create one and add it to the sahred model
             var meme = Meme(top: topTextField.text!, bottom: bottomTextField.text!, image: imageView.image!, memedImage: memedImage)
-            // Add the saved meme to the shared model array
-            let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-            appDelegate.memes.append(meme)
+            // Add the saved meme to the shared model
+            MemeManager.sharedInstance.appendMeme(meme)
         }
     }
 }

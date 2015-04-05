@@ -8,7 +8,7 @@
         <!--Meme Editor View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController storyboardIdentifier="memeEditor" id="vXZ-lx-hvc" customClass="MemeEditorViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MemeEditor" id="vXZ-lx-hvc" customClass="MemeEditorViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -44,6 +44,11 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no"/>
                             </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="TOP" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="4zS-5n-Jiv">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no"/>
+                            </textField>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="08o-oi-6eS">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <items>
@@ -61,11 +66,6 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="TOP" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="4zS-5n-Jiv">
-                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -75,26 +75,28 @@
                             <constraint firstItem="4zS-5n-Jiv" firstAttribute="centerX" secondItem="RMB-Ry-BzS" secondAttribute="centerX" id="7Nd-Jf-7Hk"/>
                             <constraint firstAttribute="centerX" secondItem="08o-oi-6eS" secondAttribute="centerX" id="7Wf-o8-85X"/>
                             <constraint firstItem="RMB-Ry-BzS" firstAttribute="height" secondItem="kh9-bI-dsS" secondAttribute="height" id="9bc-wP-Nyj">
-                                <variation key="widthClass=compact" constant="-20"/>
+                                <variation key="widthClass=compact" constant="0.0"/>
                             </constraint>
                             <constraint firstItem="W5J-eZ-b0J" firstAttribute="top" secondItem="RMB-Ry-BzS" secondAttribute="bottom" constant="-111" id="EM6-Ku-WjJ">
                                 <variation key="widthClass=compact" constant="-100"/>
                             </constraint>
                             <constraint firstItem="RMB-Ry-BzS" firstAttribute="top" secondItem="4zS-5n-Jiv" secondAttribute="bottom" constant="-92" id="Fva-3P-LAS">
-                                <variation key="widthClass=compact" constant="-100"/>
+                                <variation key="widthClass=compact" constant="-120"/>
                             </constraint>
                             <constraint firstAttribute="centerX" secondItem="RMB-Ry-BzS" secondAttribute="centerX" constant="-23" id="Kbt-YA-1Jn">
                                 <variation key="widthClass=compact" constant="0.0"/>
                             </constraint>
                             <constraint firstAttribute="width" secondItem="08o-oi-6eS" secondAttribute="width" id="P0c-yL-YXc"/>
                             <constraint firstAttribute="centerY" secondItem="RMB-Ry-BzS" secondAttribute="centerY" constant="-34.5" id="TKy-0e-UTK">
-                                <variation key="widthClass=compact" constant="-10"/>
+                                <variation key="widthClass=compact" constant="0.0"/>
                             </constraint>
                             <constraint firstItem="4zS-5n-Jiv" firstAttribute="width" secondItem="RMB-Ry-BzS" secondAttribute="width" id="Wxe-jN-Byv">
                                 <variation key="widthClass=compact" constant="-57"/>
                             </constraint>
                             <constraint firstItem="RMB-Ry-BzS" firstAttribute="width" secondItem="kh9-bI-dsS" secondAttribute="width" id="duv-RF-vlq"/>
-                            <constraint firstItem="08o-oi-6eS" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="eQg-um-o7d"/>
+                            <constraint firstItem="08o-oi-6eS" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="eQg-um-o7d">
+                                <variation key="widthClass=compact" constant="0.0"/>
+                            </constraint>
                             <constraint firstItem="4zS-5n-Jiv" firstAttribute="width" secondItem="W5J-eZ-b0J" secondAttribute="width" id="q7W-SL-Dfh"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="6jL-gd-v2I" secondAttribute="bottom" constant="20" id="v3p-vh-64Q">
                                 <variation key="widthClass=compact" constant="0.0"/>
@@ -105,26 +107,26 @@
                                 <exclude reference="RMB-Ry-BzS"/>
                                 <exclude reference="6jL-gd-v2I"/>
                                 <exclude reference="W5J-eZ-b0J"/>
-                                <exclude reference="08o-oi-6eS"/>
                                 <exclude reference="4zS-5n-Jiv"/>
+                                <exclude reference="08o-oi-6eS"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="v3p-vh-64Q"/>
+                                <exclude reference="7Nd-Jf-7Hk"/>
+                                <exclude reference="Wxe-jN-Byv"/>
+                                <exclude reference="q7W-SL-Dfh"/>
+                                <exclude reference="EM6-Ku-WjJ"/>
                                 <exclude reference="7Wf-o8-85X"/>
                                 <exclude reference="P0c-yL-YXc"/>
                                 <exclude reference="eQg-um-o7d"/>
+                                <exclude reference="6Gv-SQ-QCv"/>
+                                <exclude reference="7Mb-04-tPX"/>
                                 <exclude reference="7BK-eH-9IZ"/>
                                 <exclude reference="9bc-wP-Nyj"/>
                                 <exclude reference="Fva-3P-LAS"/>
                                 <exclude reference="Kbt-YA-1Jn"/>
                                 <exclude reference="TKy-0e-UTK"/>
                                 <exclude reference="duv-RF-vlq"/>
-                                <exclude reference="7Nd-Jf-7Hk"/>
-                                <exclude reference="Wxe-jN-Byv"/>
-                                <exclude reference="q7W-SL-Dfh"/>
-                                <exclude reference="EM6-Ku-WjJ"/>
-                                <exclude reference="6Gv-SQ-QCv"/>
-                                <exclude reference="7Mb-04-tPX"/>
-                                <exclude reference="v3p-vh-64Q"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -132,26 +134,26 @@
                                 <include reference="RMB-Ry-BzS"/>
                                 <include reference="6jL-gd-v2I"/>
                                 <include reference="W5J-eZ-b0J"/>
-                                <include reference="08o-oi-6eS"/>
                                 <include reference="4zS-5n-Jiv"/>
+                                <include reference="08o-oi-6eS"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="v3p-vh-64Q"/>
+                                <include reference="7Nd-Jf-7Hk"/>
+                                <include reference="Wxe-jN-Byv"/>
+                                <include reference="q7W-SL-Dfh"/>
+                                <include reference="EM6-Ku-WjJ"/>
                                 <include reference="7Wf-o8-85X"/>
                                 <include reference="P0c-yL-YXc"/>
                                 <include reference="eQg-um-o7d"/>
+                                <include reference="6Gv-SQ-QCv"/>
+                                <include reference="7Mb-04-tPX"/>
                                 <include reference="7BK-eH-9IZ"/>
                                 <include reference="9bc-wP-Nyj"/>
                                 <include reference="Fva-3P-LAS"/>
                                 <include reference="Kbt-YA-1Jn"/>
                                 <include reference="TKy-0e-UTK"/>
                                 <include reference="duv-RF-vlq"/>
-                                <include reference="7Nd-Jf-7Hk"/>
-                                <include reference="Wxe-jN-Byv"/>
-                                <include reference="q7W-SL-Dfh"/>
-                                <include reference="EM6-Ku-WjJ"/>
-                                <include reference="6Gv-SQ-QCv"/>
-                                <include reference="7Mb-04-tPX"/>
-                                <include reference="v3p-vh-64Q"/>
                             </mask>
                         </variation>
                     </view>
@@ -168,7 +170,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
-        <!--Meme Table View Controller-->
+        <!--Sent memes-->
         <scene sceneID="oUj-ET-DDz">
             <objects>
                 <tableViewController id="xY2-m6-04l" customClass="MemeTableViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
@@ -184,13 +186,14 @@
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J43-M4-FUf">
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                            <color key="backgroundColor" red="0.098039217293262482" green="0.098039217293262482" blue="0.098039217293262482" alpha="1" colorSpace="calibratedRGB"/>
                                             <variation key="widthClass=compact" fixedFrame="YES">
                                                 <rect key="frame" x="0.0" y="0.0" width="200" height="99.5"/>
                                             </variation>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ujQ-5y-hwh">
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ujQ-5y-hwh">
                                             <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                             <variation key="widthClass=compact" fixedFrame="YES">
@@ -222,7 +225,7 @@
                             <outlet property="delegate" destination="xY2-m6-04l" id="ZpT-pP-OEI"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="sR3-BO-B8L">
+                    <navigationItem key="navigationItem" title="Sent memes" id="sR3-BO-B8L">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="9RR-Yg-WLC">
                             <connections>
                                 <action selector="createMeme:" destination="xY2-m6-04l" id="FJK-79-bSS"/>
@@ -291,7 +294,7 @@
             </objects>
             <point key="canvasLocation" x="453" y="1729"/>
         </scene>
-        <!--Meme Collection View Controller-->
+        <!--Sent memes-->
         <scene sceneID="SCd-f9-QLs">
             <objects>
                 <viewController id="eBL-qm-6Oi" customClass="MemeCollectionViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
@@ -307,7 +310,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uTT-NS-csI">
-                                    <size key="itemSize" width="130" height="130"/>
+                                    <size key="itemSize" width="115" height="115"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -322,10 +325,10 @@
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="115" height="115"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eSQ-4x-NeG">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eSQ-4x-NeG">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                 </imageView>
                                             </subviews>
@@ -406,7 +409,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="QLh-m4-q3N">
+                    <navigationItem key="navigationItem" title="Sent memes" id="QLh-m4-q3N">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="dYf-ow-1Os">
                             <connections>
                                 <action selector="createMeme:" destination="eBL-qm-6Oi" id="2Up-g0-NfH"/>
@@ -430,23 +433,35 @@
                         <viewControllerLayoutGuide type="bottom" id="mmX-fb-Lly"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Evc-4c-MzW">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MMl-Cq-kJI">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4R3-xy-oso">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Delete">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteMeme:" destination="b2H-eO-u3c" eventType="touchUpInside" id="7wz-fy-POZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="MMl-Cq-kJI" secondAttribute="centerY" constant="-57" id="0Dv-Rh-Qc1">
-                                <variation key="widthClass=compact" constant="0.0"/>
+                                <variation key="widthClass=compact" constant="35"/>
                             </constraint>
+                            <constraint firstItem="mmX-fb-Lly" firstAttribute="top" secondItem="4R3-xy-oso" secondAttribute="bottom" constant="20" id="21N-yE-vQn"/>
                             <constraint firstAttribute="centerX" secondItem="MMl-Cq-kJI" secondAttribute="centerX" constant="-16" id="9u7-U2-ta4">
                                 <variation key="widthClass=compact" constant="0.0"/>
                             </constraint>
                             <constraint firstItem="MMl-Cq-kJI" firstAttribute="leading" secondItem="Evc-4c-MzW" secondAttribute="leadingMargin" id="UDQ-KH-cYk">
                                 <variation key="widthClass=compact" constant="-16"/>
                             </constraint>
+                            <constraint firstAttribute="centerX" secondItem="4R3-xy-oso" secondAttribute="centerX" id="aWW-Ee-yl0"/>
                             <constraint firstItem="MMl-Cq-kJI" firstAttribute="top" secondItem="Ga1-W0-hYi" secondAttribute="bottom" constant="37" id="uPQ-kz-Spx">
                                 <variation key="widthClass=compact" constant="-20"/>
                             </constraint>
@@ -454,23 +469,29 @@
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="MMl-Cq-kJI"/>
+                                <exclude reference="4R3-xy-oso"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="0Dv-Rh-Qc1"/>
                                 <exclude reference="9u7-U2-ta4"/>
                                 <exclude reference="UDQ-KH-cYk"/>
                                 <exclude reference="uPQ-kz-Spx"/>
+                                <exclude reference="aWW-Ee-yl0"/>
+                                <exclude reference="21N-yE-vQn"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="MMl-Cq-kJI"/>
+                                <include reference="4R3-xy-oso"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="0Dv-Rh-Qc1"/>
                                 <include reference="9u7-U2-ta4"/>
                                 <include reference="UDQ-KH-cYk"/>
                                 <include reference="uPQ-kz-Spx"/>
+                                <include reference="aWW-Ee-yl0"/>
+                                <include reference="21N-yE-vQn"/>
                             </mask>
                         </variation>
                     </view>

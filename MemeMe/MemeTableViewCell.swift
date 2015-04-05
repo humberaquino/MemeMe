@@ -9,28 +9,10 @@
 import Foundation
 import UIKit
 
-class MemeTableViewCell: UITableViewCell {    
+// Custom table view cell that represents a sent meme
+class MemeTableViewCell: UITableViewCell {
     
     @IBOutlet weak var memeImageView: UIImageView!
     @IBOutlet weak var memeLabel: UILabel!
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: UITableViewCellStyle.Value1, reuseIdentifier: reuseIdentifier)
-    }
-
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
-
 }

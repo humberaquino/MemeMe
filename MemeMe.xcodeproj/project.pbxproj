@@ -14,6 +14,7 @@
 		571649CE1ACF0CA900F8CFE9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 571649CC1ACF0CA900F8CFE9 /* LaunchScreen.xib */; };
 		571649DA1ACF0CA900F8CFE9 /* MemeMeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571649D91ACF0CA900F8CFE9 /* MemeMeTests.swift */; };
 		576279B31AD0AF9A0024CC28 /* MemeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576279B21AD0AF9A0024CC28 /* MemeDetailViewController.swift */; };
+		576F9AA91AD1A766004A4727 /* MemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576F9AA81AD1A766004A4727 /* MemeManager.swift */; };
 		578EB6261AD0377100111BA1 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578EB6251AD0377100111BA1 /* Meme.swift */; };
 		578EB6281AD03BC700111BA1 /* MemeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578EB6271AD03BC700111BA1 /* MemeCollectionViewController.swift */; };
 		578EB62A1AD03BD100111BA1 /* MemeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578EB6291AD03BD100111BA1 /* MemeTableViewController.swift */; };
@@ -43,6 +44,7 @@
 		571649D81ACF0CA900F8CFE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		571649D91ACF0CA900F8CFE9 /* MemeMeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeMeTests.swift; sourceTree = "<group>"; };
 		576279B21AD0AF9A0024CC28 /* MemeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeDetailViewController.swift; sourceTree = "<group>"; };
+		576F9AA81AD1A766004A4727 /* MemeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeManager.swift; sourceTree = "<group>"; };
 		578EB6251AD0377100111BA1 /* Meme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 		578EB6271AD03BC700111BA1 /* MemeCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeCollectionViewController.swift; sourceTree = "<group>"; };
 		578EB6291AD03BD100111BA1 /* MemeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeTableViewController.swift; sourceTree = "<group>"; };
@@ -94,8 +96,8 @@
 				578EB6311AD08AA900111BA1 /* Editor */,
 				578EB6301AD08AA100111BA1 /* CollectionView */,
 				578EB62F1AD08A9A00111BA1 /* TableView */,
+				576F9AA71AD18C65004A4727 /* Detail */,
 				571649C71ACF0CA900F8CFE9 /* Main.storyboard */,
-				576279B21AD0AF9A0024CC28 /* MemeDetailViewController.swift */,
 				571649CA1ACF0CA900F8CFE9 /* Images.xcassets */,
 				571649CC1ACF0CA900F8CFE9 /* LaunchScreen.xib */,
 				571649C11ACF0CA900F8CFE9 /* Supporting Files */,
@@ -128,6 +130,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		576F9AA71AD18C65004A4727 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				576279B21AD0AF9A0024CC28 /* MemeDetailViewController.swift */,
+			);
+			name = Detail;
+			sourceTree = "<group>";
+		};
 		578EB62F1AD08A9A00111BA1 /* TableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				578EB6251AD0377100111BA1 /* Meme.swift */,
+				576F9AA81AD1A766004A4727 /* MemeManager.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -266,6 +277,7 @@
 				578EB6261AD0377100111BA1 /* Meme.swift in Sources */,
 				571649C61ACF0CA900F8CFE9 /* MemeEditorViewController.swift in Sources */,
 				578EB62E1AD082BD00111BA1 /* MemeTableViewCell.swift in Sources */,
+				576F9AA91AD1A766004A4727 /* MemeManager.swift in Sources */,
 				578EB6341AD09E9E00111BA1 /* MemeCollectionViewCell.swift in Sources */,
 				578EB62A1AD03BD100111BA1 /* MemeTableViewController.swift in Sources */,
 				571649C41ACF0CA900F8CFE9 /* AppDelegate.swift in Sources */,
@@ -392,7 +404,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				INFOPLIST_FILE = MemeMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -403,7 +414,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				INFOPLIST_FILE = MemeMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

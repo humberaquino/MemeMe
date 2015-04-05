@@ -255,11 +255,11 @@
             </objects>
             <point key="canvasLocation" x="-492" y="1492"/>
         </scene>
-        <!--List-->
+        <!--Navigation Controller-->
         <scene sceneID="SDl-1U-bj4">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="695-WG-gbZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="List" id="jfE-sd-Ske"/>
+                    <tabBarItem key="tabBarItem" title="" image="table" id="jfE-sd-Ske"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hUa-Vn-qOd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -274,11 +274,11 @@
             </objects>
             <point key="canvasLocation" x="453" y="1063"/>
         </scene>
-        <!--Collection-->
+        <!--Navigation Controller-->
         <scene sceneID="1lH-gs-zQt">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zu0-Te-r2D" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Collection" id="3vd-8j-zZ7"/>
+                    <tabBarItem key="tabBarItem" title="" image="collection" selectedImage="collection" id="3vd-8j-zZ7"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="KbB-Ak-X6p">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -485,4 +485,8 @@
             <point key="canvasLocation" x="2167.5" y="1554"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="collection" width="30" height="30"/>
+        <image name="table" width="30" height="30"/>
+    </resources>
 </document>

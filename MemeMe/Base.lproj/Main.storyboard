@@ -39,14 +39,9 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="yKU-So-sDg"/>
                                 </items>
                             </toolbar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W5J-eZ-b0J">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="W5J-eZ-b0J">
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="TOP" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="4zS-5n-Jiv">
-                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no"/>
                             </textField>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="08o-oi-6eS">
@@ -66,6 +61,11 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="TOP" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="4zS-5n-Jiv">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -91,13 +91,11 @@
                                 <variation key="widthClass=compact" constant="-10"/>
                             </constraint>
                             <constraint firstItem="4zS-5n-Jiv" firstAttribute="width" secondItem="RMB-Ry-BzS" secondAttribute="width" id="Wxe-jN-Byv">
-                                <variation key="widthClass=compact" constant="-42"/>
-                            </constraint>
-                            <constraint firstItem="RMB-Ry-BzS" firstAttribute="width" secondItem="W5J-eZ-b0J" secondAttribute="width" id="XqY-Ez-EKz">
-                                <variation key="widthClass=compact" constant="-42"/>
+                                <variation key="widthClass=compact" constant="-57"/>
                             </constraint>
                             <constraint firstItem="RMB-Ry-BzS" firstAttribute="width" secondItem="kh9-bI-dsS" secondAttribute="width" id="duv-RF-vlq"/>
                             <constraint firstItem="08o-oi-6eS" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="eQg-um-o7d"/>
+                            <constraint firstItem="4zS-5n-Jiv" firstAttribute="width" secondItem="W5J-eZ-b0J" secondAttribute="width" id="q7W-SL-Dfh"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="6jL-gd-v2I" secondAttribute="bottom" constant="20" id="v3p-vh-64Q">
                                 <variation key="widthClass=compact" constant="0.0"/>
                             </constraint>
@@ -107,26 +105,26 @@
                                 <exclude reference="RMB-Ry-BzS"/>
                                 <exclude reference="6jL-gd-v2I"/>
                                 <exclude reference="W5J-eZ-b0J"/>
-                                <exclude reference="4zS-5n-Jiv"/>
                                 <exclude reference="08o-oi-6eS"/>
+                                <exclude reference="4zS-5n-Jiv"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="v3p-vh-64Q"/>
-                                <exclude reference="7Nd-Jf-7Hk"/>
-                                <exclude reference="Wxe-jN-Byv"/>
-                                <exclude reference="EM6-Ku-WjJ"/>
                                 <exclude reference="7Wf-o8-85X"/>
                                 <exclude reference="P0c-yL-YXc"/>
                                 <exclude reference="eQg-um-o7d"/>
-                                <exclude reference="6Gv-SQ-QCv"/>
-                                <exclude reference="7Mb-04-tPX"/>
                                 <exclude reference="7BK-eH-9IZ"/>
                                 <exclude reference="9bc-wP-Nyj"/>
                                 <exclude reference="Fva-3P-LAS"/>
                                 <exclude reference="Kbt-YA-1Jn"/>
                                 <exclude reference="TKy-0e-UTK"/>
-                                <exclude reference="XqY-Ez-EKz"/>
                                 <exclude reference="duv-RF-vlq"/>
+                                <exclude reference="7Nd-Jf-7Hk"/>
+                                <exclude reference="Wxe-jN-Byv"/>
+                                <exclude reference="q7W-SL-Dfh"/>
+                                <exclude reference="EM6-Ku-WjJ"/>
+                                <exclude reference="6Gv-SQ-QCv"/>
+                                <exclude reference="7Mb-04-tPX"/>
+                                <exclude reference="v3p-vh-64Q"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -134,26 +132,26 @@
                                 <include reference="RMB-Ry-BzS"/>
                                 <include reference="6jL-gd-v2I"/>
                                 <include reference="W5J-eZ-b0J"/>
-                                <include reference="4zS-5n-Jiv"/>
                                 <include reference="08o-oi-6eS"/>
+                                <include reference="4zS-5n-Jiv"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="v3p-vh-64Q"/>
-                                <include reference="7Nd-Jf-7Hk"/>
-                                <include reference="Wxe-jN-Byv"/>
-                                <include reference="EM6-Ku-WjJ"/>
                                 <include reference="7Wf-o8-85X"/>
                                 <include reference="P0c-yL-YXc"/>
                                 <include reference="eQg-um-o7d"/>
-                                <include reference="6Gv-SQ-QCv"/>
-                                <include reference="7Mb-04-tPX"/>
                                 <include reference="7BK-eH-9IZ"/>
                                 <include reference="9bc-wP-Nyj"/>
                                 <include reference="Fva-3P-LAS"/>
                                 <include reference="Kbt-YA-1Jn"/>
                                 <include reference="TKy-0e-UTK"/>
-                                <include reference="XqY-Ez-EKz"/>
                                 <include reference="duv-RF-vlq"/>
+                                <include reference="7Nd-Jf-7Hk"/>
+                                <include reference="Wxe-jN-Byv"/>
+                                <include reference="q7W-SL-Dfh"/>
+                                <include reference="EM6-Ku-WjJ"/>
+                                <include reference="6Gv-SQ-QCv"/>
+                                <include reference="7Mb-04-tPX"/>
+                                <include reference="v3p-vh-64Q"/>
                             </mask>
                         </variation>
                     </view>
@@ -278,7 +276,7 @@
         <scene sceneID="1lH-gs-zQt">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zu0-Te-r2D" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="collection" selectedImage="collection" id="3vd-8j-zZ7"/>
+                    <tabBarItem key="tabBarItem" title="" image="collection" id="3vd-8j-zZ7"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="KbB-Ak-X6p">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

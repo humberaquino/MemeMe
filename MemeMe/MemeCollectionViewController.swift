@@ -16,7 +16,7 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDataSource
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad()        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -49,7 +49,6 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDataSource
         
         self.navigationController?.pushViewController(destinationController, animated: true)
     }
-    
     
     @IBAction func createMeme(sender: UIBarButtonItem) {
         presentMemeEditor()

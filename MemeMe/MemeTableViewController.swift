@@ -15,6 +15,8 @@ class MemeTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.leftBarButtonItem = self.editButtonItem()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -29,7 +31,7 @@ class MemeTableViewController: UITableViewController {
         super.viewDidAppear(animated)
         if memes.count == 0 {
             // No memes. Lets present the editor
-            presentMemeEditor()
+            presentCleanMemeEditor()
         }
     }
     // MARK: -
@@ -53,6 +55,21 @@ class MemeTableViewController: UITableViewController {
     // MARK: -
     // MARK: UITableViewDelegate
     
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
+        let edit = UITableViewRowAction(style: UITableViewRowActionStyle.Normal, title: "Edit", handler: { (action, indexPath) -> Void in
+            let meme = self.memes[indexPath.row]
+            self.presentMemeEditor(meme)
+        })
+        let delete = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Delete", handler: { (action, indexPath) -> Void in
+            self.removeMemeAtIndexPath(indexPath)
+        })
+        
+        let arrayofactions: Array = [delete, edit]
+        
+        return arrayofactions
+
+    }
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let meme = memes[indexPath.row]
         
@@ -62,13 +79,39 @@ class MemeTableViewController: UITableViewController {
         self.navigationController?.pushViewController(destinationController, animated: true)        
     }
     
-    @IBAction func createMeme(sender: UIBarButtonItem) {        
-        presentMemeEditor()
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        switch editingStyle {
+            case .Delete:
+                removeMemeAtIndexPath(indexPath)
+            default:
+                return
+        }
     }
     
-    func presentMemeEditor() {
+    func removeMemeAtIndexPath(indexPath: NSIndexPath) {
+        // remove the deleted item from the model
+        memes.removeAtIndex(indexPath.row)
+        // remove the deleted item from the `UITableView`
+        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+    }
+    
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    @IBAction func createMeme(sender: UIBarButtonItem) {        
+        presentCleanMemeEditor()
+    }
+    
+    func presentCleanMemeEditor() {
+        presentMemeEditor(nil)
+    }
+    
+    func presentMemeEditor(meme: Meme?) {
         let memeEditorController = storyboard!.instantiateViewControllerWithIdentifier("memeEditor") as MemeEditorViewController
-        
+        if let existingMeme = meme {
+            memeEditorController.meme = existingMeme
+        }
         self.presentViewController(memeEditorController, animated: true, completion: nil)
     }
 }

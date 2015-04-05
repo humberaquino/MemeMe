@@ -11,10 +11,10 @@ import UIKit
 
 class Meme: NSObject {
     
-    let top: String
-    let bottom: String
-    let image: UIImage
-    let memedImage: UIImage
+    var top: String
+    var bottom: String
+    var image: UIImage
+    var memedImage: UIImage
     
     init(top: String, bottom: String, image: UIImage, memedImage: UIImage) {
         self.top = top

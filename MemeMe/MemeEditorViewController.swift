@@ -21,16 +21,26 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var toolBar: UIToolbar!
     
+    var meme: Meme?
+    
     // MARK: -
     // MARK: View life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        shareButton.enabled = false
         
-        setupTextField("TOP", textField: topTextField)
-        setupTextField("BOTTOM", textField: bottomTextField)
+        if let existingMeme = meme {
+            setupTextField(existingMeme.top, textField: topTextField)
+            setupTextField(existingMeme.bottom, textField: bottomTextField)
+            imageView.image = existingMeme.image
+            shareButton.enabled = true
+        } else {
+            setupTextField("TOP", textField: topTextField)
+            setupTextField("BOTTOM", textField: bottomTextField)
+            shareButton.enabled = false
+        }
+        
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -188,12 +198,17 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     func saveMeme(memedImage: UIImage) {
-        var meme = Meme(top: topTextField.text!, bottom: bottomTextField.text!, image: imageView.image!,
-            memedImage: memedImage)
-        
-        // Add the saved meme to the shared model array
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        appDelegate.memes.append(meme)
+        if let existingMeme = meme {
+            existingMeme.top = topTextField.text!
+            existingMeme.bottom = bottomTextField.text!
+            existingMeme.image = imageView.image!
+            existingMeme.memedImage = memedImage
+        } else {
+            var meme = Meme(top: topTextField.text!, bottom: bottomTextField.text!, image: imageView.image!, memedImage: memedImage)
+            // Add the saved meme to the shared model array
+            let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+            appDelegate.memes.append(meme)
+        }
     }
 }
 

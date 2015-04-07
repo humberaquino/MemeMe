@@ -128,7 +128,8 @@ class MemeTableViewController: UITableViewController {
     // Correclty removes the meme from the model and the table
     func removeMemeAtIndexPath(indexPath: NSIndexPath) {
         // remove the deleted item from the model
-        memes.removeAtIndex(indexPath.row)
+        MemeManager.sharedInstance.deleteMemeAtIndex(indexPath.row)
+        memes = MemeManager.sharedInstance.memes
         // remove the deleted item from the `UITableView`
         tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
     }

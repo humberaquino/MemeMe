@@ -41,7 +41,7 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDataSource
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MemeCollectionViewCell", forIndexPath: indexPath) as MemeCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MemeCollectionViewCell", forIndexPath: indexPath) as! MemeCollectionViewCell
         
         let meme = memes[indexPath.row]
         cell.memeImageView.image = meme.memedImage
@@ -55,7 +55,7 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDataSource
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let meme = memes[indexPath.row]
         
-        let destinationController = storyboard?.instantiateViewControllerWithIdentifier("MemeDetail") as MemeDetailViewController
+        let destinationController = storyboard?.instantiateViewControllerWithIdentifier("MemeDetail") as! MemeDetailViewController
         destinationController.meme = meme
         destinationController.memeIndex = indexPath.row
         
@@ -73,7 +73,7 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDataSource
     // MARK: Utilities
     
     func presentMemeEditor() {
-        let memeEditorController = storyboard!.instantiateViewControllerWithIdentifier("MemeEditor") as MemeEditorViewController
+        let memeEditorController = storyboard!.instantiateViewControllerWithIdentifier("MemeEditor") as! MemeEditorViewController
         
         self.presentViewController(memeEditorController, animated: true, completion: nil)
     }

@@ -40,7 +40,7 @@ class MemeDetailViewController: UIViewController {
     }
     
     func editMeme(sender: UIBarButtonItem) {
-        let memeEditorController = storyboard!.instantiateViewControllerWithIdentifier("MemeEditor") as MemeEditorViewController
+        let memeEditorController = storyboard!.instantiateViewControllerWithIdentifier("MemeEditor") as! MemeEditorViewController
         memeEditorController.meme = meme
         presentViewController(memeEditorController, animated: true, completion: nil)
     }

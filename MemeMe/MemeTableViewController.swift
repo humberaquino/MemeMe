@@ -56,7 +56,7 @@ class MemeTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("MemeTableCell") as MemeTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("MemeTableCell") as! MemeTableViewCell
         
         let meme = memes[indexPath.row]
         
@@ -102,7 +102,7 @@ class MemeTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let meme = memes[indexPath.row]
         
-        let destinationController = storyboard?.instantiateViewControllerWithIdentifier("MemeDetail") as MemeDetailViewController
+        let destinationController = storyboard?.instantiateViewControllerWithIdentifier("MemeDetail") as! MemeDetailViewController
         destinationController.meme = meme
         destinationController.memeIndex = indexPath.row
         
@@ -136,7 +136,7 @@ class MemeTableViewController: UITableViewController {
     
     // Presents the meme editor. Uses a existing meme if is provided as a parameter
     func presentMemeEditor(meme: Meme?) {
-        let memeEditorController = storyboard!.instantiateViewControllerWithIdentifier("MemeEditor") as MemeEditorViewController
+        let memeEditorController = storyboard!.instantiateViewControllerWithIdentifier("MemeEditor") as! MemeEditorViewController
         if let existingMeme = meme {
             memeEditorController.meme = existingMeme
         }
@@ -145,8 +145,8 @@ class MemeTableViewController: UITableViewController {
     
     // Creates a string to display as the meme summary in a cell
     func buildMemeTextSummary(meme: Meme) -> String {
-        let topCount = countElements(meme.top)
-        let bottomCount = countElements(meme.bottom)
+        let topCount = count(meme.top)
+        let bottomCount = count(meme.bottom)
         
         var topSubstring = meme.top
         var bottomSubstring = meme.bottom
